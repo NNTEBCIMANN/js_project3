@@ -1,68 +1,208 @@
+:root{
+  --bg:        #050912;
+  --surface:   #0A1220;
+  --surface-2: #101A2C;
+  --border:    #1C2A42;
+  --text:      #DDE7F5;
+  --muted:     #7B8DA8;
+  --accent:    #4F9DFF;
+  --done:      #2DD4BF;
+  --danger:    #F87171;
+}
+
 *{
     margin: 0;
     padding: 0;
     text-decoration: none;
-    /* color: #fff;
-    background-color: #000; */
+    box-sizing: border-box;
+    font-size: 16px;
 }
+
 body{
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 50px;
     gap: 32px;
+    background: radial-gradient(1200px 600px at 50% -10%, #0A1730 0%, var(--bg) 60%);
+    background-attachment: fixed;
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    min-height: 100vh;
 }
+
 h1{
     font-size: 64px;
-    border: 3px solid #000;
+    border: 2px solid var(--border);
     width: 100%;
     border-radius: 20px;
     text-align: center;
+    background: linear-gradient(180deg, #0F1B32, #080F1D);
+    box-shadow: 0 0 90px -40px var(--accent);
 }
+
 h2{
     font-size: 32px;
-    border: 3px solid #000;
+    border: 2px solid var(--border);
     width: 50%;
+    padding-bottom: 10px;
     border-radius: 10px;
     text-align: center;
+    color: var(--muted);
+    font-weight: 500;
+    background: transparent;
 }
+
 form{
-    border: 3px solid #000;
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid var(--border);
     padding: 20px;
     border-radius: 20px;
     width: 25%;
+    background: var(--surface);
 }
+
+body>form{
+    flex-direction: column;
+}
+
+body>form div{
+    display: flex;
+}
+body>form p{
+    display: none;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+    color: var(--danger);
+}
+
 input{
     border-radius: 10px;
-    border: 2px solid #000;
+    border: 2px solid var(--border);
     padding: 10px;
-    width: 75%;
-}
-button{
-    border-radius: 10px;
-    border: 2px solid #000;
-    padding: 10px;
-}
-#line{
-    display: none;
-    height: 2px;
     width: 100%;
-    background-color: #000;
+    margin-right: 5px;
+    background: #070E1B;
+    color: var(--text);
 }
-#list{
-    /* display: none; */
-    height: 400px;
+
+input::placeholder{ color: var(--muted); }
+
+input:focus{
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(79, 157, 255, .18);
+}
+
+body form button{
+    border-radius: 10px;
+    border: 2px solid var(--accent);
+    padding: 10px;
+    background: var(--accent);
+    color: #04101F;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+body form button:hover{
+    background: #71B2FF;
+    border-color: #71B2FF;
+}
+
+#listDiv{
+    display: none;
+    height: fit-content;
     width: 50%;
-    box-sizing: border-box;
-    background-color: gray;
     border-radius: 20px;
-    border: 3px solid #000;
+    border: 2px solid var(--border);
     padding: 10px 20px;
+    background: var(--surface);
+    position: relative;
 }
+
 .liIt{
     width: 100%;
-    height: 50px;
-    background-color: white;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border: 2px solid var(--border);
     border-radius: 10px;
     margin: 10px 0;
+    padding: 8px 10px;
+    background: var(--surface-2);
+}
+
+.liIt p{ flex: 1; }
+
+.liIt span{
+    display: flex;
+}
+
+.liIt button{
+    border-radius: 10px;
+    border: 2px solid;
+    padding: 10px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.liIt button:first-of-type,
+#delForm button:first-of-type{
+    border-color: var(--done);
+    color: var(--done);
+    margin-right: 10px;
+}
+.liIt button:first-of-type:hover,
+#delForm button:first-of-type:hover{
+    background: rgba(45, 212, 191, .14);
+}
+
+.liIt button:last-of-type,
+#delForm button:last-of-type{
+    border-color: var(--danger);
+    color: var(--danger);
+}
+.liIt button:last-of-type:hover,
+#delForm button:last-of-type:hover{
+    background: rgba(248, 113, 113, .14);
+}
+
+.liIt.done {
+    color: var(--done);
+    border-color: var(--done);
+}
+
+.liIt.done .task-text {
+    text-decoration: line-through;
+}
+
+#delForm{
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 45%;
+    top: 0;
+    right: 33%;
+    background-color: #0E1729;
+    border: 1px solid #243353;
+}
+#delForm.on{
+    display: flex;
+}
+#delForm div{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+#delForm button{
+    width: 25%;
+    padding: 5px 10px;
+    background-color: var(--surface-2);
 }

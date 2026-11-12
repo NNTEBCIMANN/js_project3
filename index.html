@@ -2,24 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta name="viewport" content="width=device.width, initial-scale=1.0">
     <title>To Do List</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>To Do List</h1>
-    <h2>Your Best Planner</h2>
-    <form action="">
-        <input type="text" placeholder="ჩაწერეთ თქვენი დავალება">
-        <button type="submit">დამატება</button>
+    <h2>თქვენი საუკეთესო დამგეგმავი</h2>
+    <form id="inputForm">
+        <div>
+            <input type="text" id="input" placeholder="ჩაწერეთ თქვენი დავალება">
+            <button type="submit" id="inputBtn">დამატება</button>
+        </div>
+        <p id="fill">გთხოვთ შეავსოთ ზედა ველი!</p>
     </form>
-    <div id="line"></div>
-    <div id="list">
-        <div class="liIt"></div>
-        <div class="liIt"></div>
-        <div class="liIt"></div>
-        <div class="liIt"></div>
+    <div id="listDiv">
+        <form id="delForm">
+            <p>დარწმუნებული ხარ რომ გსურს წაშლა?</p>
+            <div>
+                <button type="button" data-act = "yes">კი</button>
+                <button type="button" data-act = "no">არა</button>
+            </div>
+        </form>
+        <div id="list"></div>
     </div>
+
 </body>
 <script src="script.js"></script>
 </html>
